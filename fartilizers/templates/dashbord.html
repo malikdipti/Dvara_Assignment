@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title> Dvara</title>
+      <style>
+          .container{
+              height: 650px;
+              width:600px;
+              border: 1px solid blue;
+              padding-top: 35px;
+          }
+          .cat {
+              padding-top: 40px;
+              padding-left:100px;
+              height: 280px;
+              border: 1px solid blue;
+
+          }
+           .sub{
+               padding-left:0;
+               padding-top: 50px;
+
+               height: 300px;
+           }
+
+
+      </style>
+  </head>
+  <body>
+ <div class="container">
+  <div class="cat">
+
+    <form action="{% url 'reports' %}" name="Typeofcatagory" method="get">
+      <label>Select Categogy  : </label>
+        <select name="name"  onchange="Typeofcatagory.submit()">
+
+
+    {% for x in model1 %}
+     <option value="{{ x.Typeofcatagory }}">{{ x.Typeofcatagory }}</option>
+    {% endfor %}
+
+</select>
+</form>
+
+  <form action="{% url 'all' %}" method="post">
+    {% csrf_token %}
+      <label>Select SubCategogy  :  </label>
+      <select name="name1"><br><br>
+        {% for x in model2 %}
+        <option >{{ x.subcatagory }}</option>
+        {% endfor %}
+        </select><br><br>
+     <lebel>Enter Items:</lebel>
+      <input type="text" name="type" placeholder="Items " required><br><br>
+     <button type="submit">SUBMIT</button><br><br>
+    </form>
+  </div>
+
+<div class="sub">
+  <table align="center" border=1">
+      <tr>
+          <th colspan="3">All Deatails</th>
+
+      </tr>
+      <tr>
+          <th>catagory</th>
+          <th>subcatagory</th>
+          <th>types</th>
+      </tr>
+      {% for y in data %}
+      <tr><td>{{ y.catagory }}</td>
+          <td>{{ y.subcatagory }}</td>
+          <td>{{ y.types }}</td>
+      </tr>
+      {% endfor %}
+
+  </table>
+</div>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
